@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "pet-plat"
+version = "0.1.0"
+description = ""
+authors = ["valiaisnotprogrammer <ValiaChernykh@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.111.1"
+uvicorn = "^0.30.1"
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# рефернс https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+line-length = 88
+indent-width = 4
+select = ["E", "W", "F", "C90"]
+fixable = ["ALL"]
+#ignore = ["E203", "E266", "E501", "W503", "F403", "F401"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
