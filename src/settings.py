@@ -63,7 +63,7 @@ class AuthServiceConfig(BaseModel):
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file="/home/valiaisnotprogrammer/PycharmProjects/pet-plat/.env", env_prefix="BACKEND__",
+    model_config = SettingsConfigDict(env_file=".env", env_prefix="BACKEND__",
                                       env_nested_delimiter="__", case_sensitive=False)
 
     db: PGConfig
