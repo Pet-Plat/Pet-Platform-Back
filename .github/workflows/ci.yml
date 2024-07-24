@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3
+
+      - name: setup Python 3.11
+        uses: actions/setup-python@4
+        with:
+          python-version: "3.11"
+
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+
+#      - uses: actions/cache@v3
+#      - name: Define a cache for the virtual environment based on the dependencies lock file
+#        with:
+#          path: "./.venv"
+#          key: venv-${{ hashFiles('poetry.lock') }}
+
+      - name: Install the project dependencies
+        run: poetry install
+
+      - name: Run the automated tests
+        run: poetry run pytest
+
+
+
+
+
+
+
