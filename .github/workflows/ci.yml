@@ -12,11 +12,10 @@ jobs:
   ci:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@4
+      - uses: actions/checkout@4
 
       - name: setup Python 3.11
-        uses: actions/setup-python@4
+        uses: actions/setup-python@5
         with:
           python-version: "3.11"
 
