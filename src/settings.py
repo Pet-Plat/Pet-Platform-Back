@@ -1,7 +1,14 @@
+import os
 from typing import Literal
 
 from pydantic import BaseModel
 from pydantic_settings import SettingsConfigDict, BaseSettings
+
+
+if os.getcwd().endswith("src"):
+    DOTENV = os.path.join(os.path.pardir, ".env")
+else:
+    DOTENV = ".env"
 
 
 class PGConfig(BaseModel):
@@ -10,10 +17,15 @@ class PGConfig(BaseModel):
     USER: str
     PASSWORD: str
     DATABASE: str
+    TEST_DATABASE_URL: str
 
     @property
     def pg_dns(self):
         return f"postgresql+asyncpg://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DATABASE}"
+
+    @property
+    def pg_test_dns(self):
+        return self.TEST_DATABASE_URL
 
 
 class AppRunConfig(BaseModel):
@@ -63,7 +75,7 @@ class AuthServiceConfig(BaseModel):
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_prefix="BACKEND__",
+    model_config = SettingsConfigDict(env_file=DOTENV, env_prefix="BACKEND__",
                                       env_nested_delimiter="__", case_sensitive=False)
 
     db: PGConfig
