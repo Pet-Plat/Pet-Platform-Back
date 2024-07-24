@@ -49,5 +49,5 @@ copy .env.example .env
 7. Скопируйте в него все, что есть в .env.example
 8. (опционально). Чтобы редактор кода лучше понимал относительные импорты внутри src, пометьте src как ресурсную:
 
-8.1. ЛКМ по src -> Mark directory as -> Sourcec Root
+8.1. ЛКМ по src -> Mark directory as -> Sources Root
 
